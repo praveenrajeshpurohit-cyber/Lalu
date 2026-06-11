@@ -1,0 +1,132 @@
+{
+  "theme": "Light (with Dark Mode Support)",
+  "archetype": "Archetype 4: Swiss & High-Contrast (Education Variant)",
+  "design_philosophy": "Objective, clear, and structured. Focuses on content legibility and high contrast. Mobile-first app-like interface inspired by ClassPlus, focusing on progressive disclosure and card-based feeds.",
+  "colors": {
+    "light": {
+      "primary": "#0A2540",
+      "primary_foreground": "#FFFFFF",
+      "secondary": "#E6F0FF",
+      "secondary_foreground": "#0052CC",
+      "accent": "#FFB800",
+      "accent_foreground": "#422800",
+      "background": "#FFFFFF",
+      "surface": "#F8FAFC",
+      "text_primary": "#0F172A",
+      "text_secondary": "#64748B",
+      "border": "#E2E8F0",
+      "success": "#10B981",
+      "danger": "#EF4444"
+    },
+    "dark": {
+      "primary": "#3B82F6",
+      "primary_foreground": "#FFFFFF",
+      "secondary": "#1E293B",
+      "secondary_foreground": "#94A3B8",
+      "accent": "#FFC53D",
+      "accent_foreground": "#422800",
+      "background": "#020617",
+      "surface": "#0F172A",
+      "text_primary": "#F8FAFC",
+      "text_secondary": "#94A3B8",
+      "border": "#1E293B",
+      "success": "#059669",
+      "danger": "#DC2626"
+    }
+  },
+  "typography": {
+    "heading_font": "Outfit, sans-serif",
+    "body_font": "DM Sans, sans-serif",
+    "scales": {
+      "h1": "text-4xl sm:text-5xl font-bold tracking-tight text-primary",
+      "h2": "text-2xl sm:text-3xl font-bold tracking-tight text-primary",
+      "h3": "text-xl sm:text-2xl font-semibold tracking-tight",
+      "body": "text-base leading-relaxed text-text_secondary",
+      "small": "text-sm text-text_secondary tracking-wide",
+      "overline": "text-xs font-bold uppercase tracking-[0.2em] text-secondary_foreground"
+    }
+  },
+  "spacing_and_layout": {
+    "philosophy": "Generous spacing. Mobile screens use p-4 to p-6, desktop uses p-8 to p-12.",
+    "container": "w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8",
+    "grid_modes": {
+      "mobile": "flex flex-col gap-6",
+      "bento_dashboard": "grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6",
+      "course_grid": "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8"
+    },
+    "surface_strategy": "Cardless or 1px subtle borders on cards. No deep shadows. Use border-slate-200 (light) and border-slate-800 (dark). BorderRadius: rounded-xl to rounded-2xl."
+  },
+  "components": {
+    "navigation": {
+      "mobile": "Bottom Tab Navigation with fixed positioning, z-50, icons (Home, Courses, Live, Profile).",
+      "desktop": "Top Navbar with Logo, Search, Navigation Links, Profile Dropdown. z-50 sticky.",
+      "floating_whatsapp": "Fixed bottom-right (above bottom nav on mobile). Color: #25D366. Icon-only with pulse animation."
+    },
+    "buttons": {
+      "primary": "bg-primary text-white rounded-full px-6 py-3 font-semibold hover:bg-primary/90 transition-all active:scale-95",
+      "accent": "bg-accent text-accent-foreground rounded-full px-6 py-3 font-bold shadow-[0_4px_14px_0_rgba(255,184,0,0.39)] hover:bg-accent/90 transition-all",
+      "outline": "border-2 border-primary text-primary rounded-full px-6 py-3 font-semibold hover:bg-secondary transition-all"
+    },
+    "hero_section": {
+      "style": "Two-column on desktop, stack on mobile. Background: soft gradient or abstract geometric. Large H1, clear subtext, 'Join Live Classes' primary CTA.",
+      "image_treatment": "Image wrapped in a card with subtle floating elements (e.g., student stats, floating icons)."
+    },
+    "teacher_profile": {
+      "style": "Card with image, name 'Praveen Pareek', subject tags, and bio. Use horizontal layout on desktop, stack on mobile."
+    },
+    "course_details": {
+      "layout": "Hero image/video player at top (16:9). Underneath, a Shadcn Tabs component for 'Syllabus/Lessons', 'PDFs', 'Assignments'. Sticky enroll CTA at the bottom on mobile."
+    },
+    "payment_verification": {
+      "style": "Card-based form. Display Admin UPI QR code prominently. Below, an input to upload screenshot. Use clear status indicators (Pending/Approved) with distinct colors."
+    },
+    "video_player": {
+      "style": "Widescreen 16:9 container, dark background, custom controls if possible. Overlay title."
+    }
+  },
+  "interactions": {
+    "hover_states": "Buttons and cards must lift slightly (-translate-y-1) and increase shadow/border contrast.",
+    "transitions": "Use 'transition-all duration-300 ease-out' globally.",
+    "active_states": "Buttons must use 'active:scale-95' for tactile mobile feel."
+  },
+  "testing": {
+    "attributes": "All interactive elements MUST include 'data-testid' (e.g., data-testid='enroll-button', data-testid='whatsapp-fab')."
+  },
+  "media_assets": {
+    "hero_background": {
+      "url": "https://images.pexels.com/photos/12843342/pexels-photo-12843342.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+      "description": "Abstract blue geometric pattern for header/hero backgrounds to give a professional tech-edu vibe."
+    },
+    "student_learning": {
+      "url": "https://images.pexels.com/photos/4260481/pexels-photo-4260481.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+      "description": "Student focused on laptop - use for Hero or About Us section."
+    },
+    "student_studying": {
+      "url": "https://images.pexels.com/photos/771317/pexels-photo-771317.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+      "description": "Student making notes - use for course promotion or testimonials."
+    },
+    "teacher_portrait_1": {
+      "url": "https://images.pexels.com/photos/5212675/pexels-photo-5212675.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+      "description": "Teacher portrait - use for Praveen Pareek's profile section."
+    },
+    "teacher_portrait_2": {
+      "url": "https://images.pexels.com/photos/5212321/pexels-photo-5212321.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+      "description": "Alternative teacher portrait."
+    },
+    "upi_qr_placeholder": {
+      "url": "https://images.pexels.com/photos/12843342/pexels-photo-12843342.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+      "description": "Use a generic placeholder or an abstract image for the QR code container until admin uploads."
+    }
+  },
+  "instructions_to_main_agent": [
+    "Build a mobile-first responsive web app using React, Tailwind, and Shadcn UI.",
+    "Implement a Bottom Navigation Bar for mobile viewports (hidden on lg+ screens).",
+    "Use standard semantic HTML. Build custom components for marketing sections but use Shadcn for forms, tabs, dropdowns, and dialogs.",
+    "For the course detail screen, strictly follow the mobile app patterns: sticky bottom CTA for 'Enroll', tabs for different course contents.",
+    "Ensure the floating WhatsApp button is always accessible but doesn't overlap the bottom navigation on mobile.",
+    "Support Dark Mode via Tailwind's 'dark:' classes, prioritizing slate/slate-900 combinations.",
+    "Apply 'data-testid' to EVERY form input, button, and navigation link.",
+    "Avoid using raw <img> tags; wrap them in div containers with aspect-ratio, bg-slate-100, and object-cover to prevent layout shifts.",
+    "For the admin panel, use a Sidebar layout on desktop and a hamburger menu on mobile."
+  ]
+}
