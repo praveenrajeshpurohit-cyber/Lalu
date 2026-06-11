@@ -42,7 +42,7 @@ function ToastStack({ items, fade }: { items: ToastItem[]; fade: Animated.Value 
   const { colors } = useApp();
   if (items.length === 0) return null;
   return (
-    <View pointerEvents="none" style={styles.stack} testID="toast-stack">
+    <View pointerEvents="none" style={[styles.stack, { pointerEvents: "none" }]} testID="toast-stack">
       {items.map((i) => {
         const bg =
           i.variant === "success" ? colors.success : i.variant === "error" ? colors.danger : colors.primary;

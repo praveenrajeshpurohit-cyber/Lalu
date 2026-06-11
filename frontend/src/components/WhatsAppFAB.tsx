@@ -18,8 +18,7 @@ export function WhatsAppFAB({ bottomOffset = 24 }: { bottomOffset?: number }) {
   };
   return (
     <View
-      pointerEvents="box-none"
-      style={[styles.wrap, { bottom: Math.max(insets.bottom, 8) + bottomOffset }]}
+      style={[styles.wrap, { bottom: Math.max(insets.bottom, 8) + bottomOffset, pointerEvents: "box-none" }]}
     >
       <Pressable
         accessibilityLabel="Chat on WhatsApp"
