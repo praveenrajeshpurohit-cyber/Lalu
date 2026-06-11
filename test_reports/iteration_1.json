@@ -1,0 +1,35 @@
+{
+  "summary": "First-run end-to-end test of Comman School LMS (FastAPI + Expo). All 34 pytest backend tests PASSED (100%). Frontend UI flows verified on mobile viewport 390x844: landing page, dark-mode toggle, WhatsApp FAB, registration -> /student/home, admin login -> /admin/dashboard, student /courses with search + horizontal-scroll category chips (chip filter narrows results from 6 -> 1 for Languages), course detail with sticky enroll-btn (56px height), admin courses create modal (UITEST course visible in list), admin payments with pending/approved/rejected tabs, and admin settings (UPI, contact, branding, live class scheduler). No critical issues. Only minor: a single deprecation warning 'props.pointerEvents is deprecated' surfaced from react-native-web internals.",
+  "backend_issues": {
+    "critical": [],
+    "minor": []
+  },
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": [],
+    "react_native_issues": [
+      {"component": "pointerEvents prop usage (react-native-web warning)", "issue": "Console warning: 'props.pointerEvents is deprecated. Use style.pointerEvents'. Likely from a TouchableOpacity/Pressable or third-party lib. Not blocking, but should be migrated."}
+    ]
+  },
+  "test_report_links": ["/app/backend/tests/test_lms_backend.py", "/app/test_reports/pytest/pytest_results.xml"],
+  "action_items": [
+    "(Low) Hunt down the component still passing pointerEvents as a prop and move it to style.pointerEvents to silence the react-native-web deprecation warning.",
+    "(Optional) Backend log shows a passlib bcrypt warning 'error reading bcrypt version' due to bcrypt 4.x removing __about__. Functionality unaffected (hash/verify works in all 34 tests). Consider pinning passlib>=1.7.5 or bcrypt<4.1 to clean up the log."
+  ],
+  "critical_code_review_comments": [
+    "server.py is a single 790-line file; acceptable now but consider splitting into routers (auth, courses, payments, admin) if it grows further.",
+    "JWT_SECRET_KEY falls back to a hard-coded default if env var missing. For production, fail fast when JWT_SECRET_KEY is unset instead of using the dev default.",
+    "create_access_token uses datetime.utcnow() (naive) while everything else uses timezone-aware utcnow(); harmless for jwt 'exp' but inconsistent.",
+    "MongoDB _id is correctly excluded in all queries (good)."
+  ],
+  "updated_files": [
+    "/app/backend/tests/test_lms_backend.py (new pytest suite, 34 tests)"
+  ],
+  "success_rate": {"backend": "100% (34/34)", "frontend": "100% of flows tested"},
+  "seed_data_creation": "Created 1 student account during automation (uitest_*@example.com, flow_*@example.com). Created and deleted one TEST_/UITEST_ course via admin. Cleanup performed; remaining test data is benign.",
+  "retest_needed": false,
+  "should_main_agent_self_test": true,
+  "context_for_next_testing_agent": "Backend external URL: https://comman-lms.preview.emergentagent.com/api. Admin: Praveenrajeshpurohit@gmail.com / Praveen@5187. Student testIDs use 'course-card-{id}', 'chip-{slug}' (e.g. chip-languages, chip-class-10). Course detail uses 'course-detail-screen' + 'enroll-btn' (sticky bottom bar). Admin course form opens via 'new-course-btn' and saves via 'save-course'. Payments tabs: tab-pending/tab-approved/tab-rejected; row testID 'payment-{id}', then 'approve-payment' / 'reject-payment'. The frontend env uses EXPO_PUBLIC_BACKEND_URL (not EXPO_BACKEND_URL). 401 console errors on initial load are expected (auth/me probe before token present).",
+  "rca_of_issue": "N/A - no functional bugs found in this iteration."
+}
