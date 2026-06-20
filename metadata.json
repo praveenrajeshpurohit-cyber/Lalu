@@ -1,0 +1,6 @@
+{
+  "name": "Monograph Atelier Catalog",
+  "description": "An elegant, minimalist e-commerce catalog store featuring curated archives, granular search & sort filters, product quick studies, and a persistent delivery ledger.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
